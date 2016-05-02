@@ -114,7 +114,7 @@ class ViewController: UIViewController {
         xoButtons[move].setTitle(player.side.rawValue, forState: UIControlState.Normal)
         board.cells[move].mark = player.side
         if board.isThreeInARow() {
-            showAlertBox("Game Over", withMessage: "\(player.side.rawValue) win!!!")
+            showAlertBox("Game Over", withMessage: "\(player.side.rawValue) win!")
             gameEnd = true;
         }
         moveCount += 1
