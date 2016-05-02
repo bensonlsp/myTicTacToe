@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     let computer = computerPlayer(side: Mark.Nought)
     
     @IBOutlet var xoButtons: [UIButton]!
+    @IBOutlet weak var messageLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +80,7 @@ class ViewController: UIViewController {
         for index in 0..<board.cells.count {
             board.cells[index].mark = .Empty
         }
+        changeMessageLabel("Let's play!")
     }
     
     func buttonHit(buttonRef: Int) {
@@ -114,24 +116,17 @@ class ViewController: UIViewController {
         xoButtons[move].setTitle(player.side.rawValue, forState: UIControlState.Normal)
         board.cells[move].mark = player.side
         if board.isThreeInARow() {
-            showAlertBox("Game Over", withMessage: "\(player.side.rawValue) win! Play again!")
+            changeMessageLabel("Game Over! \(player.side.rawValue) win!")
             gameEnd = true;
         }
         moveCount += 1
         if moveCount >= (board.boardSize * board.boardSize) {
-            showAlertBox("Draw Game", withMessage: "Thank you for playing! Play again!")
+            changeMessageLabel("Draw Game! Thank you for playing!")
             gameEnd = true
         }
     }
     
-    func showAlertBox(withTitle: String, withMessage: String? = nil, style: UIAlertControllerStyle = .Alert) {
-        let alert = UIAlertController(title: withTitle, message: withMessage, preferredStyle: style)
-        let dismissAction = UIAlertAction(title: "Dismiss", style: .Default, handler: dismissAlert)
-        alert.addAction(dismissAction)
-        presentViewController(alert, animated: true, completion: nil)
-    }
-    
-    func dismissAlert(sender: UIAlertAction) {
-        replay()
+    func changeMessageLabel(message: String) {
+        messageLabel.text = message
     }
 }
