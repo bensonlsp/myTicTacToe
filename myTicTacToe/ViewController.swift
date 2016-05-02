@@ -114,12 +114,12 @@ class ViewController: UIViewController {
         xoButtons[move].setTitle(player.side.rawValue, forState: UIControlState.Normal)
         board.cells[move].mark = player.side
         if board.isThreeInARow() {
-            showAlertBox("Game Over", withMessage: "\(player.side.rawValue) win!")
+            showAlertBox("Game Over", withMessage: "\(player.side.rawValue) win! Play again!")
             gameEnd = true;
         }
         moveCount += 1
         if moveCount >= (board.boardSize * board.boardSize) {
-            showAlertBox("Draw Game", withMessage: "Thank you for playing!")
+            showAlertBox("Draw Game", withMessage: "Thank you for playing! Play again!")
             gameEnd = true
         }
     }
