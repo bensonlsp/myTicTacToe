@@ -121,7 +121,7 @@ class ViewController: UIViewController {
         }
         moveCount += 1
         if moveCount >= (board.boardSize * board.boardSize) {
-            changeMessageLabel("Draw Game! Thank you for playing!")
+            changeMessageLabel("Draw Game!")
             gameEnd = true
         }
     }
